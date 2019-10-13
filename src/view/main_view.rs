@@ -33,11 +33,9 @@ impl MainView {
                     c.transform,
                     gl,
                 );
-                let text = format!("{}", point.hit_count);
+                let count = format!("{}", point.hit_count);
                 let transform = c.transform.trans(point.point.x, point.point.y + 20.0);
-                text::Text::new_color(color::BLACK, 12)
-                    .draw(&text, glyphs, &c.draw_state, transform, gl)
-                    .expect("Failed to draw text");
+                text(color::BLACK, 12, &count, glyphs, transform, gl).expect("Failed to draw text");
             }
             if pivot.x > 0.0 {
                 let line = [
