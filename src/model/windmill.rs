@@ -5,6 +5,7 @@ use crate::model::windmill_point::WindmillPoint;
 
 pub struct Windmill {
     pub rotation: f64,
+    pub speed: f64,
     pub points: Vec<WindmillPoint>,
     pub pivot: Point,
     pub line: [Point; 2],
@@ -14,6 +15,7 @@ impl Windmill {
     pub fn reset() -> Windmill {
         Windmill {
             rotation: 0.0,
+            speed: 1.0,
             points: vec![],
             pivot: Point::zero(),
             line: [Point::zero(), Point::zero()],

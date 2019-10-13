@@ -44,6 +44,17 @@ impl MainController {
             self.windmill = Windmill::reset();
         }
 
+        if let Some(Button::Keyboard(Key::U)) = e.press_args() {
+            self.windmill.speed += 0.25;
+        }
+
+        if let Some(Button::Keyboard(Key::D)) = e.press_args() {
+            self.windmill.speed -= 0.25;
+            if self.windmill.speed < 0.1 {
+                self.windmill.speed = 0.1
+            }
+        }
+
         e.mouse_cursor(|pos| {
             self.cursor.x = pos[0];
             self.cursor.y = pos[1];
@@ -51,7 +62,7 @@ impl MainController {
     }
 
     fn update(&mut self, args: &UpdateArgs) {
-        self.windmill.rotation += 1.0 * args.dt;
+        self.windmill.rotation += self.windmill.speed * args.dt;
         self.windmill.detect_new_pivot();
     }
 
