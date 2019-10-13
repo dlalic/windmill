@@ -1,15 +1,13 @@
 use crate::model::windmill::Windmill;
 use graphics::*;
-use opengl_graphics::GlGraphics;
+use opengl_graphics::{GlGraphics, GlyphCache};
 use piston::input::RenderArgs;
 
 pub struct MainView {
     pub gl: GlGraphics,
+    pub glyphs: GlyphCache<'static>,
 }
 
-const WHITE: [f32; 4] = [1.0, 1.0, 1.0, 1.0];
-const BLACK: [f32; 4] = [0.0, 0.0, 0.0, 1.0];
-const RED: [f32; 4] = [1.0, 0.0, 0.0, 1.0];
 const ORANGE: [f32; 4] = [1.0, 0.64, 0.0, 1.0];
 const BLUE: [f32; 4] = [0.0, 0.0, 1.0, 1.0];
 
@@ -17,14 +15,15 @@ impl MainView {
     pub fn render(&mut self, args: &RenderArgs, windmill: &Windmill) {
         let points = &windmill.points;
         let pivot = &windmill.pivot;
-        let windmill_line = Line::new(BLACK, 0.5);
+        let windmill_line = Line::new(color::BLACK, 0.5);
+        let glyphs = &mut self.glyphs;
 
         self.gl.draw(args.viewport(), |c, gl| {
-            clear(WHITE, gl);
+            clear(color::WHITE, gl);
             for point in points {
                 let mut point_color = BLUE;
                 if point.point == *pivot {
-                    point_color = RED;
+                    point_color = color::BLACK;
                 } else if point.orientation.is_sign_negative() {
                     point_color = ORANGE;
                 }
@@ -34,6 +33,11 @@ impl MainView {
                     c.transform,
                     gl,
                 );
+                let text = format!("{}", point.hit_count);
+                let transform = c.transform.trans(point.point.x, point.point.y + 20.0);
+                text::Text::new_color(color::BLACK, 12)
+                    .draw(&text, glyphs, &c.draw_state, transform, gl)
+                    .expect("Failed to draw text");
             }
             if pivot.x > 0.0 {
                 let line = [

@@ -40,6 +40,7 @@ impl Windmill {
             point.orientation = orientation;
             if result.trunc() != 0.0 && result.is_sign_negative() {
                 self.pivot = point.point;
+                point.hit_count += 1;
                 break;
             }
         }

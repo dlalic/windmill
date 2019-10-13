@@ -2,7 +2,7 @@ use crate::model::point::Point;
 use crate::model::windmill::Windmill;
 use crate::model::windmill_point::WindmillPoint;
 use crate::view::main_view::MainView;
-use opengl_graphics::{GlGraphics, OpenGL};
+use opengl_graphics::{GlGraphics, GlyphCache, OpenGL, TextureSettings};
 use piston::input::{GenericEvent, UpdateArgs};
 use std::f64::consts::PI;
 
@@ -18,6 +18,8 @@ impl MainController {
             cursor: Point::zero(),
             view: MainView {
                 gl: GlGraphics::new(gl),
+                glyphs: GlyphCache::new("assets/FiraSans-Regular.ttf", (), TextureSettings::new())
+                    .expect("Failed to load font"),
             },
             windmill: Windmill::reset(),
         }
