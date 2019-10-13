@@ -18,6 +18,17 @@ the pivot always being a point from `S`.
 Show that for a suitable `P ∈ S` and a suitable starting line `l` containing `P`, the resulting
 windmill will visit each point of `S` as a pivot infinitely often.
 
+## Usage
+
+`cargo run`
+
+
+| Key | Action |
+| :---: | --- |
+| R | reset |
+| U | increase speed |
+| D | decrease speed |
+
 ## TDD tasks
 
 - Use proptest and criterion to assert that line contains a point algorithm is fast and solid
