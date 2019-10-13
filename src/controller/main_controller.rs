@@ -1,4 +1,3 @@
-use crate::model::angle::Angle;
 use crate::model::point::Point;
 use crate::model::polar::Polar;
 use crate::model::windmill::Windmill;
@@ -7,13 +6,12 @@ use crate::view::main_view::MainView;
 use opengl_graphics::{GlGraphics, OpenGL};
 use piston::input::{GenericEvent, UpdateArgs};
 use std::f64::consts::PI;
-use std::cmp::min;
+use crate::model::orientation::{Orientation};
 
 pub struct MainController {
     pub cursor: Point,
     view: MainView,
     windmill: Windmill,
-    previous_pivot: Point
 }
 
 impl MainController {
@@ -29,7 +27,6 @@ impl MainController {
                 pivot: Point { x: 0.0, y: 0.0 },
                 line: [Point { x: 0.0, y: 0.0 }, Point { x: 0.0, y: 0.0 }],
             },
-            previous_pivot: Point { x: 0.0, y: 0.0 }
         }
     }
 
@@ -76,17 +73,16 @@ impl MainController {
     }
 
     fn detect_new_pivot(&mut self) {
-        let line_angle = self.windmill.line[0].angle(&self.windmill.line[1]);
-        for point in &self.windmill.points {
-            if point.point == self.windmill.pivot || point.point == self.previous_pivot {
+        for point in &mut self.windmill.points {
+            if point.point == self.windmill.pivot {
                 continue;
             }
-
-            let diff = self.windmill.pivot.angle(&point.point) - line_angle;
-            let left_diff = diff.abs();
-            let right_diff = (diff % PI).abs();
-            if left_diff.min(right_diff) < 0.01  {
-                self.previous_pivot = self.windmill.pivot;
+            let orientation = point.point.orientation(self.windmill.line[0], self.windmill.line[1]);
+            // Check if the result of multiplication is < 0 instead of
+            // if orientation < 0 && previous > 0 || orientation > 0 && previous < 0
+            let result = orientation * point.orientation;
+            point.orientation = orientation;
+            if result.trunc() != 0.0 && result.is_sign_negative()  {
                 self.windmill.pivot = point.point;
                 break;
             }

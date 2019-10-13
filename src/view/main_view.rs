@@ -10,6 +10,8 @@ pub struct MainView {
 const WHITE: [f32; 4] = [1.0, 1.0, 1.0, 1.0];
 const BLACK: [f32; 4] = [0.0, 0.0, 0.0, 1.0];
 const RED: [f32; 4] = [1.0, 0.0, 0.0, 1.0];
+const ORANGE: [f32; 4] = [1.0, 0.64, 0.0, 1.0];
+const BLUE: [f32; 4] = [0.0, 0.0, 1.0, 1.0];
 
 impl MainView {
     pub fn render(&mut self, args: &RenderArgs, windmill: &Windmill) {
@@ -20,7 +22,12 @@ impl MainView {
         self.gl.draw(args.viewport(), |c, gl| {
             clear(WHITE, gl);
             for point in points {
-                let point_color = if point.point == *pivot { RED } else { BLACK };
+                let mut point_color = BLUE;
+                if point.point == *pivot {
+                    point_color = RED;
+                } else if point.orientation.is_sign_negative() {
+                    point_color = ORANGE;
+                }
                 ellipse(
                     point_color,
                     ellipse::circle(point.point.x, point.point.y, 4.0),

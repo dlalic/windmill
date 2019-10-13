@@ -1,5 +1,4 @@
-pub mod angle;
-pub mod collinear;
+pub mod orientation;
 pub mod point;
 pub mod polar;
 pub mod windmill;
