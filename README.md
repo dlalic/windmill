@@ -5,6 +5,8 @@
 A game inspired by the [nice visualisation](https://www.youtube.com/watch?v=M64HUIJFTZM) of a problem from the [52nd International
 Mathematical Olympiad](https://www.imo-official.org/problems/IMO2011SL.pdf).
 
+![](assets/windmill.gif)
+
 ## Problem statement
 
 Let `S` be a finite set of at least two points in the plane. Assume that no three points of `S` are
