@@ -7,6 +7,12 @@ pub struct Point {
     pub y: f64,
 }
 
+impl Point {
+    pub fn zero() -> Point {
+        Point { x: 0.0, y: 0.0 }
+    }
+}
+
 impl Polar for Point {
     fn from_polar(r: f64, phi: f64) -> Point {
         Point {

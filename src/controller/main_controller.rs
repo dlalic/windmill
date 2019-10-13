@@ -15,16 +15,11 @@ pub struct MainController {
 impl MainController {
     pub fn new(gl: OpenGL) -> MainController {
         MainController {
-            cursor: Point { x: 0.0, y: 0.0 },
+            cursor: Point::zero(),
             view: MainView {
                 gl: GlGraphics::new(gl),
             },
-            windmill: Windmill {
-                rotation: 0.0,
-                points: vec![],
-                pivot: Point { x: 0.0, y: 0.0 },
-                line: [Point { x: 0.0, y: 0.0 }, Point { x: 0.0, y: 0.0 }],
-            },
+            windmill: Windmill::reset(),
         }
     }
 

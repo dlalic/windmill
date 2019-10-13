@@ -11,6 +11,15 @@ pub struct Windmill {
 }
 
 impl Windmill {
+    pub fn reset() -> Windmill {
+        Windmill {
+            rotation: 0.0,
+            points: vec![],
+            pivot: Point::zero(),
+            line: [Point::zero(), Point::zero()],
+        }
+    }
+
     pub fn calculate_line(&mut self, radius: f64) {
         let polar = Point::from_polar(radius, self.rotation);
         self.line[0].x = self.pivot.x + polar.x;
@@ -30,7 +39,6 @@ impl Windmill {
             let result = orientation * point.orientation;
             point.orientation = orientation;
             if result.trunc() != 0.0 && result.is_sign_negative() {
-                println!("mofo");
                 self.pivot = point.point;
                 break;
             }
@@ -45,20 +53,15 @@ mod tests {
 
     #[test]
     fn test_detect_new_pivot() {
-        let point_0 = WindmillPoint::new(&Point { x: 0.0, y: 0.0 });
-        let point_1 = WindmillPoint::new(&Point { x: 5.0, y: 5.0 });
-        let mut windmill = Windmill {
-            rotation: 0.0,
-            points: vec![point_0, point_1],
-            pivot: point_0.point,
-            line: [point_0.point, point_0.point],
-        };
+        let mut windmill = Windmill::reset();
+        let point = WindmillPoint::new(&Point { x: 5.0, y: 5.0 });
+        windmill.points.push(point);
         windmill.rotation = PI / 4.0 - 0.01;
         windmill.calculate_line(10.0);
         windmill.detect_new_pivot();
         windmill.rotation = PI / 4.0 + 0.01;
         windmill.calculate_line(10.0);
         windmill.detect_new_pivot();
-        assert_eq!(windmill.pivot, point_1.point);
+        assert_eq!(windmill.pivot, point.point);
     }
 }
