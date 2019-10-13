@@ -28,6 +28,7 @@ Mathematical Olympiad](https://www.imo-official.org/problems/IMO2011SL.pdf).
 | R | reset |
 | U | increase speed |
 | D | decrease speed |
+| Esc | quit |
 
 ## TDD tasks
 
