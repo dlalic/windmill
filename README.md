@@ -7,16 +7,16 @@ Mathematical Olympiad](https://www.imo-official.org/problems/IMO2011SL.pdf).
 
 ![](assets/windmill.gif)
 
-## Problem statement
+## Problem
 
-Let `S` be a finite set of at least two points in the plane. Assume that no three points of `S` are
-collinear. By a windmill we mean a process as follows. Start with a line `l` going through a
-point `P ∈ S`. Rotate `l` clockwise around the pivot `P` until the line contains another point `Q`
-of `S`. The point `Q` now takes over as the new pivot. This process continues indefinitely, with
-the pivot always being a point from `S`.
-
-Show that for a suitable `P ∈ S` and a suitable starting line `l` containing `P`, the resulting
-windmill will visit each point of `S` as a pivot infinitely often.
+> Let `S` be a finite set of at least two points in the plane. Assume that no three points of `S` are
+> collinear. By a windmill we mean a process as follows. Start with a line `l` going through a
+> point `P ∈ S`. Rotate `l` clockwise around the pivot `P` until the line contains another point `Q`
+> of `S`. The point `Q` now takes over as the new pivot. This process continues indefinitely, with
+> the pivot always being a point from `S`.
+> 
+> Show that for a suitable `P ∈ S` and a suitable starting line `l` containing `P`, the resulting
+> windmill will visit each point of `S` as a pivot infinitely often.
 
 ## Usage
 
