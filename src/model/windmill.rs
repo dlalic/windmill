@@ -54,17 +54,21 @@ mod tests {
     use super::*;
     use std::f64::consts::PI;
 
+    fn rotate(windmill: &mut Windmill, rotation: f64) {
+        windmill.rotation = rotation;
+        windmill.calculate_line(10.0);
+        windmill.detect_new_pivot();
+    }
+
     #[test]
     fn test_detect_new_pivot() {
         let mut windmill = Windmill::reset();
         let point = WindmillPoint::new(&Point { x: 5.0, y: 5.0 });
         windmill.points.push(point);
-        windmill.rotation = PI / 4.0 - 0.01;
-        windmill.calculate_line(10.0);
-        windmill.detect_new_pivot();
-        windmill.rotation = PI / 4.0 + 0.01;
-        windmill.calculate_line(10.0);
-        windmill.detect_new_pivot();
+        let epsilon = 0.01;
+        rotate(&mut windmill, PI / 4.0 - epsilon);
+        assert_eq!(windmill.pivot, Point::zero());
+        rotate(&mut windmill, PI / 4.0 + epsilon);
         assert_eq!(windmill.pivot, point.point);
     }
 }
