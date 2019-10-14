@@ -1,3 +1,4 @@
+use crate::model::hit_counter::HitCounter;
 use crate::model::orientation::Orientation;
 use crate::model::point::Point;
 use crate::model::polar::Polar;

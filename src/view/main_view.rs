@@ -1,3 +1,4 @@
+use crate::model::hit_counter::HitCounter;
 use crate::model::windmill::Windmill;
 use graphics::*;
 use opengl_graphics::{GlGraphics, GlyphCache};
@@ -33,7 +34,7 @@ impl MainView {
                     c.transform,
                     gl,
                 );
-                let count = format!("{}", point.hit_count);
+                let count = format!("{}", point.hit_count());
                 let transform = c.transform.trans(point.point.x, point.point.y + 20.0);
                 text(color::BLACK, 12, &count, glyphs, transform, gl).expect("Failed to draw text");
             }

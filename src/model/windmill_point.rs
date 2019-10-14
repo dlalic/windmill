@@ -1,10 +1,11 @@
+use crate::model::hit_counter::HitCounter;
 use crate::model::point::Point;
 
 #[derive(Debug, Copy, Clone)]
 pub struct WindmillPoint {
     pub point: Point,
     pub orientation: f64,
-    pub hit_count: i32,
+    hit_count: i32,
 }
 
 impl WindmillPoint {
@@ -22,12 +23,18 @@ impl WindmillPoint {
         let result = self.orientation * new_orientation;
         result.trunc() != 0.0 && result.is_sign_negative()
     }
+}
 
-    pub fn increase_hit_count(&mut self) {
+impl HitCounter for WindmillPoint {
+    fn hit_count(&self) -> i32 {
+        self.hit_count
+    }
+
+    fn increase_hit_count(&mut self) {
         self.hit_count += 1;
     }
 
-    pub fn reset_hit_count(&mut self) {
+    fn reset_hit_count(&mut self) {
         self.hit_count = 0;
     }
 }
