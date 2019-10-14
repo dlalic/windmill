@@ -49,7 +49,8 @@ impl Windmill {
             if point.point == self.pivot {
                 continue;
             }
-            let orientation = point.point.orientation(self.line[0], self.line[1]);
+            let orientation = point.point.orientation(&self.line[0], &self.line[1]);
+            // Orientation switch means point should become pivot
             // Check if the result of multiplication is < 0 instead of
             // if orientation < 0 && previous > 0 || orientation > 0 && previous < 0
             let result = orientation * point.orientation;

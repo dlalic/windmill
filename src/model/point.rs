@@ -24,7 +24,7 @@ impl Polar for Point {
 }
 
 impl Orientation for Point {
-    fn orientation(&self, a: Point, b: Point) -> f64 {
+    fn orientation(&self, a: &Point, b: &Point) -> f64 {
         // Approximate 2D orientation, courtesy of https://www.cs.cmu.edu/~quake/robust.html
         let acx = a.x - self.x;
         let bcx = b.x - self.x;
@@ -52,7 +52,7 @@ mod tests {
         let point = Point { x: 1.0, y: 1.0 };
         let line_a = Point { x: 0.0, y: 10.0 };
         let line_b = Point { x: 10.0, y: 0.0 };
-        assert!(point.orientation(line_a, line_b).is_sign_negative());
+        assert!(point.orientation(&line_a, &line_b).is_sign_negative());
     }
 
     #[test]
@@ -60,7 +60,7 @@ mod tests {
         let point = Point { x: 10.0, y: 10.0 };
         let line_a = Point { x: 0.0, y: 10.0 };
         let line_b = Point { x: 10.0, y: 0.0 };
-        assert!(point.orientation(line_a, line_b).is_sign_positive());
+        assert!(point.orientation(&line_a, &line_b).is_sign_positive());
     }
 
     #[test]
@@ -68,7 +68,7 @@ mod tests {
         let point = Point { x: 5.0, y: 5.0 };
         let line_a = Point { x: 0.0, y: 10.0 };
         let line_b = Point { x: 10.0, y: 0.0 };
-        assert_eq!(point.orientation(line_a, line_b), 0.0);
+        assert_eq!(point.orientation(&line_a, &line_b), 0.0);
     }
 
     #[test]
