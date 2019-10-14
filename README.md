@@ -31,8 +31,3 @@ Mathematical Olympiad.
 | U | increase speed |
 | D | decrease speed |
 | Esc | quit |
-
-## TDD tasks
-
-- Use proptest and criterion to assert that line contains a point algorithm is fast and solid
-- Generate a set of non-collinear points with proptest and assert that there is a solution
