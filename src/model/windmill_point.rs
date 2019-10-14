@@ -20,7 +20,7 @@ impl WindmillPoint {
         // Check if the result of multiplication is < 0 instead of
         // if orientation < 0 && new_orientation > 0 || orientation > 0 && new_orientation < 0
         let result = self.orientation * new_orientation;
-        return result.trunc() != 0.0 && result.is_sign_negative();
+        result.trunc() != 0.0 && result.is_sign_negative()
     }
 
     pub fn increase_hit_count(&mut self) {

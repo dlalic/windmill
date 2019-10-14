@@ -30,7 +30,7 @@ impl Orientation for Point {
         let bcx = b.x - self.x;
         let acy = a.y - self.y;
         let bcy = b.y - self.y;
-        return acx * bcy - acy * bcx;
+        acx * bcy - acy * bcx
     }
 }
 
@@ -38,8 +38,8 @@ const COLLISION_TOLERANCE: f64 = 20.0;
 
 impl Collision for Point {
     fn is_colliding(&self, other: &Point) -> bool {
-        return (self.x - other.x).abs() < COLLISION_TOLERANCE
-            && (self.y - other.y).abs() < COLLISION_TOLERANCE;
+        (self.x - other.x).abs() < COLLISION_TOLERANCE
+            && (self.y - other.y).abs() < COLLISION_TOLERANCE
     }
 }
 

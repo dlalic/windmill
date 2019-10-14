@@ -33,7 +33,7 @@ impl MainController {
         }
 
         if let Some(u) = e.update_args() {
-            self.update(&u);
+            self.update(u);
         }
 
         if let Some(Button::Mouse(MouseButton::Left)) = e.press_args() {
@@ -61,13 +61,13 @@ impl MainController {
         });
     }
 
-    fn update(&mut self, args: &UpdateArgs) {
+    fn update(&mut self, args: UpdateArgs) {
         self.windmill.rotation += self.windmill.speed * args.dt;
         self.windmill.detect_new_pivot();
     }
 
     fn register_point(&mut self) {
-        if self.windmill.points.len() == 0 {
+        if self.windmill.points.is_empty() {
             self.windmill.register_new_pivot(&self.cursor);
         }
         match self.detect_collision() {
@@ -87,6 +87,6 @@ impl MainController {
                 return Some(point.point);
             }
         }
-        return None;
+        None
     }
 }
