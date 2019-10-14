@@ -1,10 +1,10 @@
+use crate::model::collision::Collision;
 use crate::model::point::Point;
 use crate::model::windmill::Windmill;
 use crate::model::windmill_point::WindmillPoint;
 use crate::view::main_view::MainView;
 use opengl_graphics::{GlGraphics, GlyphCache, OpenGL, TextureSettings};
 use piston::input::{Button, GenericEvent, Key, MouseButton, UpdateArgs};
-use std::f64::consts::PI;
 
 pub struct MainController {
     pub cursor: Point,
@@ -67,19 +67,26 @@ impl MainController {
     }
 
     fn register_point(&mut self) {
-        if self.detect_collision() {
-            return;
-        }
         if self.windmill.points.len() == 0 {
-            self.windmill.rotation = PI / 2.0;
-            self.windmill.pivot = *&self.cursor;
+            self.windmill.register_new_pivot(&self.cursor);
         }
-        let point = WindmillPoint::new(&self.cursor);
-        self.windmill.points.push(point);
+        match self.detect_collision() {
+            None => {
+                let point = WindmillPoint::new(&self.cursor);
+                self.windmill.points.push(point);
+            }
+            Some(point) => {
+                self.windmill.register_new_pivot(&point);
+            }
+        }
     }
 
-    fn detect_collision(&mut self) -> bool {
-        // TODO:
-        return false;
+    fn detect_collision(&self) -> Option<Point> {
+        for point in &self.windmill.points {
+            if self.cursor.is_colliding(&point.point) {
+                return Some(point.point);
+            }
+        }
+        return None;
     }
 }

@@ -1,3 +1,4 @@
+use crate::model::collision::Collision;
 use crate::model::orientation::Orientation;
 use crate::model::polar::Polar;
 
@@ -33,6 +34,15 @@ impl Orientation for Point {
     }
 }
 
+const COLLISION_TOLERANCE: f64 = 20.0;
+
+impl Collision for Point {
+    fn is_colliding(&self, other: &Point) -> bool {
+        return (self.x - other.x).abs() < COLLISION_TOLERANCE
+            && (self.y - other.y).abs() < COLLISION_TOLERANCE;
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -59,5 +69,32 @@ mod tests {
         let line_a = Point { x: 0.0, y: 10.0 };
         let line_b = Point { x: 10.0, y: 0.0 };
         assert_eq!(point.orientation(line_a, line_b), 0.0);
+    }
+
+    #[test]
+    fn test_that_collision_is_detected_when_point_is_near() {
+        let point_a = Point::zero();
+        let point_b = Point {
+            x: COLLISION_TOLERANCE - 0.1,
+            y: COLLISION_TOLERANCE - 0.1,
+        };
+        assert!(point_a.is_colliding(&point_b));
+    }
+
+    #[test]
+    fn test_that_collision_is_not_detected_when_point_is_above_tolerance() {
+        let point_a = Point::zero();
+        let point_b = Point {
+            x: COLLISION_TOLERANCE,
+            y: COLLISION_TOLERANCE,
+        };
+        assert!(!point_a.is_colliding(&point_b));
+    }
+
+    #[test]
+    fn test_that_collision_is_detected_when_points_are_same() {
+        let point_a = Point { x: 5.0, y: 5.0 };
+        let point_b = Point { x: 5.0, y: 5.0 };
+        assert!(point_a.is_colliding(&point_b));
     }
 }

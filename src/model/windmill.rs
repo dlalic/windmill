@@ -2,6 +2,7 @@ use crate::model::orientation::Orientation;
 use crate::model::point::Point;
 use crate::model::polar::Polar;
 use crate::model::windmill_point::WindmillPoint;
+use std::f64::consts::PI;
 
 pub struct Windmill {
     pub rotation: f64,
@@ -20,6 +21,12 @@ impl Windmill {
             pivot: Point::zero(),
             line: [Point::zero(), Point::zero()],
         }
+    }
+
+    pub fn register_new_pivot(&mut self, point: &Point) {
+        self.rotation = PI / 2.0;
+        self.pivot = *point;
+        self.detect_new_pivot();
     }
 
     pub fn calculate_line(&mut self, radius: f64) {
