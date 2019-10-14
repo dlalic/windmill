@@ -2,8 +2,8 @@
 
 [![Build Status](https://travis-ci.org/dlalic/windmill.svg?branch=master)](https://travis-ci.org/dlalic/windmill)
 
-A game inspired by the [nice visualization](https://www.youtube.com/watch?v=M64HUIJFTZM) of a problem from the [52nd International
-Mathematical Olympiad](https://www.imo-official.org/problems/IMO2011SL.pdf).
+A game inspired by the [nice visualization](https://www.youtube.com/watch?v=M64HUIJFTZM) of a problem from the 52nd International
+Mathematical Olympiad.
 
 ![](assets/windmill.gif)
 
@@ -17,6 +17,8 @@ Mathematical Olympiad](https://www.imo-official.org/problems/IMO2011SL.pdf).
 > 
 > Show that for a suitable `P ∈ S` and a suitable starting line `l` containing `P`, the resulting
 > windmill will visit each point of `S` as a pivot infinitely often.
+
+[Source and solution](https://www.imo-official.org/problems/IMO2011SL.pdf)
 
 ## Usage
 
