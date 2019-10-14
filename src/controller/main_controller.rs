@@ -3,7 +3,7 @@ use crate::model::windmill::Windmill;
 use crate::model::windmill_point::WindmillPoint;
 use crate::view::main_view::MainView;
 use opengl_graphics::{GlGraphics, GlyphCache, OpenGL, TextureSettings};
-use piston::input::{Button, GenericEvent, Key, UpdateArgs};
+use piston::input::{Button, GenericEvent, Key, MouseButton, UpdateArgs};
 use std::f64::consts::PI;
 
 pub struct MainController {
@@ -36,7 +36,7 @@ impl MainController {
             self.update(&u);
         }
 
-        if let Some(_button) = e.press_args() {
+        if let Some(Button::Mouse(MouseButton::Left)) = e.press_args() {
             self.register_point();
         }
 
