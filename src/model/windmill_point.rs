@@ -39,15 +39,15 @@ mod tests {
     #[test]
     fn test_that_orientation_switch_is_detected_for_negative_to_positive() {
         let mut point = WindmillPoint::new(&Point::zero());
-        point.orientation = 1.0;
-        assert!(point.is_orientation_switched(-1.0));
+        point.orientation = -1.0;
+        assert!(point.is_orientation_switched(1.0));
     }
 
     #[test]
     fn test_that_orientation_switch_is_detected_for_positive_to_negative() {
         let mut point = WindmillPoint::new(&Point::zero());
-        point.orientation = -1.0;
-        assert!(point.is_orientation_switched(1.0));
+        point.orientation = 1.0;
+        assert!(point.is_orientation_switched(-1.0));
     }
 
     #[test]
