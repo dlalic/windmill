@@ -94,6 +94,6 @@ mod tests {
     #[test]
     fn test_that_collision_is_detected_when_points_are_same() {
         let point = Point { x: 1.0, y: 1.0 };
-        assert!(point_a.is_colliding(&point_a));
+        assert!(point.is_colliding(&point));
     }
 }
