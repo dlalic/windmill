@@ -28,10 +28,9 @@ impl Windmill {
         self.pivot = *point;
         self.detect_new_pivot();
         for point in &mut self.points {
+            point.reset_hit_count();
             if point.point == self.pivot {
-                point.hit_count = 1;
-            } else {
-                point.hit_count = 0;
+                point.increase_hit_count();
             }
         }
     }
@@ -50,16 +49,12 @@ impl Windmill {
                 continue;
             }
             let orientation = point.point.orientation(&self.line[0], &self.line[1]);
-            // Orientation switch means point should become pivot
-            // Check if the result of multiplication is < 0 instead of
-            // if orientation < 0 && previous > 0 || orientation > 0 && previous < 0
-            let result = orientation * point.orientation;
-            point.orientation = orientation;
-            if result.trunc() != 0.0 && result.is_sign_negative() {
+            if point.is_orientation_switched(orientation) {
                 self.pivot = point.point;
-                point.hit_count += 1;
+                point.increase_hit_count();
                 break;
             }
+            point.orientation = orientation;
         }
     }
 }
