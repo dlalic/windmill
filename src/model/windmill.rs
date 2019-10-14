@@ -27,6 +27,13 @@ impl Windmill {
         self.rotation = PI / 2.0;
         self.pivot = *point;
         self.detect_new_pivot();
+        for point in &mut self.points {
+            if point.point == self.pivot {
+                point.hit_count = 1;
+            } else {
+                point.hit_count = 0;
+            }
+        }
     }
 
     pub fn calculate_line(&mut self, radius: f64) {
