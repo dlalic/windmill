@@ -1,10 +1,10 @@
-use crate::model::hit_counter::HitCounter;
+use crate::model::orientation::Orientation;
 use crate::model::point::Point;
 
 #[derive(Debug, Copy, Clone)]
 pub struct WindmillPoint {
-    pub point: Point,
-    pub orientation: f64,
+    point: Point,
+    orientation: f64,
     hit_count: i32,
 }
 
@@ -17,24 +17,38 @@ impl WindmillPoint {
         }
     }
 
+    pub fn get_orientation(&self, a: &Point, b: &Point) -> f64 {
+        self.point.orientation(a, b)
+    }
+
+    pub fn set_orientation(&mut self, orientation: f64) {
+        self.orientation = orientation;
+    }
+
+    pub fn get_point(&self) -> &Point {
+        &self.point
+    }
+
     pub fn is_orientation_switched(&self, new_orientation: f64) -> bool {
         // Check if the result of multiplication is < 0 instead of
         // if orientation < 0 && new_orientation > 0 || orientation > 0 && new_orientation < 0
         let result = self.orientation * new_orientation;
         result.trunc() != 0.0 && result.is_sign_negative()
     }
-}
 
-impl HitCounter for WindmillPoint {
-    fn hit_count(&self) -> i32 {
+    pub fn is_left_of_pivot(&self) -> bool {
+        self.orientation.is_sign_negative()
+    }
+
+    pub fn get_hit_count(&self) -> i32 {
         self.hit_count
     }
 
-    fn increase_hit_count(&mut self) {
+    pub fn increase_hit_count(&mut self) {
         self.hit_count += 1;
     }
 
-    fn reset_hit_count(&mut self) {
+    pub fn reset_hit_count(&mut self) {
         self.hit_count = 0;
     }
 }
