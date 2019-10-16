@@ -1,6 +1,6 @@
 use crate::model::collision::Collision;
+use crate::model::line::Line;
 use crate::model::point::Point;
-use crate::model::polar::Polar;
 use crate::model::windmill_point::WindmillPoint;
 
 pub struct Windmill {
@@ -35,7 +35,7 @@ impl Windmill {
     fn detect_new_pivot(&mut self) {
         if let Some(line) = self.line() {
             for point in &mut self.points {
-                let orientation = point.get_orientation(&line[0], &line[1]);
+                let orientation = point.get_orientation(&line.a, &line.b);
                 if point.is_orientation_switched(orientation) {
                     self.pivot = Option::from(*point.get_point());
                     point.increase_hit_count();
@@ -89,21 +89,11 @@ impl Windmill {
         &self.pivot
     }
 
-    pub fn line(&self) -> Option<[Point; 2]> {
+    pub fn line(&self) -> Option<Line> {
+        // TODO: memoize
         match self.pivot {
             None => None,
-            Some(pivot) => {
-                let polar = Point::from_polar(self.radius, self.rotation);
-                let line_a = Point {
-                    x: pivot.x + polar.x,
-                    y: pivot.y + polar.y,
-                };
-                let line_b = Point {
-                    x: pivot.x - polar.x,
-                    y: pivot.y - polar.y,
-                };
-                Some([line_a, line_b])
-            }
+            Some(pivot) => Some(Line::new(&pivot, self.radius, self.rotation)),
         }
     }
 }

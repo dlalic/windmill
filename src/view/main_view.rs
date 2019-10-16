@@ -42,7 +42,7 @@ impl MainView {
                 }
             };
             if let Some(line) = windmill.line() {
-                let line = [line[0].x, line[0].y, line[1].x, line[1].y];
+                let line = [line.a.x, line.a.y, line.b.x, line.b.y];
                 windmill_line.draw(line, &c.draw_state, c.transform, gl);
             }
         });
