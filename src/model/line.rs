@@ -1,5 +1,4 @@
-use crate::model::point::Point;
-use crate::model::polar::Polar;
+use crate::model::point::{Point, Polar};
 
 pub struct Line {
     pub(crate) a: Point,

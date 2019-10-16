@@ -1,7 +1,8 @@
-use crate::model::collision::Collision;
 use crate::model::line::Line;
-use crate::model::point::Point;
+use crate::model::point::{Collision, Point};
 use crate::model::windmill_point::WindmillPoint;
+
+const COLLISION_TOLERANCE: f64 = 20.0;
 
 pub struct Windmill {
     radius: f64,
@@ -66,7 +67,7 @@ impl Windmill {
         let collision = self
             .points
             .iter()
-            .find(|point| cursor.is_colliding(&point.get_point()));
+            .find(|point| cursor.is_colliding(&point.get_point(), COLLISION_TOLERANCE));
         match collision {
             None => {
                 let point = WindmillPoint::new(cursor);
@@ -108,7 +109,10 @@ mod tests {
         let mut windmill = Windmill::reset();
         let point_a = Point::zero();
         windmill.register_new_point(&point_a);
-        let point_b = Point { x: 10.0, y: 10.0 };
+        let point_b = Point {
+            x: COLLISION_TOLERANCE - 1.0,
+            y: COLLISION_TOLERANCE - 1.0,
+        };
         windmill.register_new_point(&point_b);
         assert_eq!(windmill.points.len(), 1);
         assert_eq!(windmill.get_pivot().unwrap(), point_a);
@@ -118,7 +122,10 @@ mod tests {
     fn test_that_new_pivot_is_detected_after_updating_rotation() {
         let mut windmill = Windmill::reset();
         let point_a = Point::zero();
-        let point_b = Point { x: 50.0, y: 50.0 };
+        let point_b = Point {
+            x: COLLISION_TOLERANCE,
+            y: COLLISION_TOLERANCE,
+        };
         windmill.register_new_point(&point_a);
         windmill.register_new_point(&point_b);
         let epsilon = 0.01;

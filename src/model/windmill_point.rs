@@ -1,5 +1,4 @@
-use crate::model::orientation::Orientation;
-use crate::model::point::Point;
+use crate::model::point::{Orientation, Point};
 
 #[derive(Debug, Copy, Clone)]
 pub struct WindmillPoint {
