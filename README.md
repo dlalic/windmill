@@ -34,4 +34,4 @@ Mathematical Olympiad.
 
 ## Implementation
 
-There are already a handful open source implementations available in different languages and frameworks including the one from the visualization video. They're mostly implemented in a way that an angle between the line and the point is calculated and then compared to `0` or `PI` to detect new pivot. This implementation calculates point orientation in regards to the line and detects new pivot when orientation changes.
+There are already a [handful](https://github.com/search?q=windmill+imo&type=Repositories) of open source implementations available in different languages and frameworks including the one from the visualization video. They're mostly implemented in a way that an angle between the line and the point is calculated and then compared to `0` or `PI` to detect new pivot. This implementation calculates point orientation in regards to the line and detects new pivot when orientation changes.
