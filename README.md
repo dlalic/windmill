@@ -1,6 +1,7 @@
 # Windmill
 
-[![Build Status](https://travis-ci.org/dlalic/windmill.svg?branch=master)](https://travis-ci.org/dlalic/windmill)
+![Continuous integration](https://github.com/dlalic/windmill/workflows/Continuous%20integration/badge.svg)
+[![CodeFactor](https://www.codefactor.io/repository/github/dlalic/resume/badge)](https://www.codefactor.io/repository/github/dlalic/windmill)
 
 A game inspired by the [nice visualization](https://www.youtube.com/watch?v=M64HUIJFTZM) of a problem from the 52nd International
 Mathematical Olympiad.
