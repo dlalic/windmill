@@ -734,6 +734,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c54f48a0072e8b2490935bc46a3ddb50ca96fdc071f675e9296063598836b7ac"
 
 [[package]]
+name = "piston-graphics_api_version"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2c10c0d7a00f671e717ab98aa2c7f7bf204082d0e6b246827dc17b68bbaf8d18"
+
+[[package]]
 name = "piston-shaders_graphics2d"
 version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -771,9 +777,9 @@ dependencies = [
 
 [[package]]
 name = "piston2d-opengl_graphics"
-version = "0.72.0"
+version = "0.73.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a4f140a01b3fb2b28216288a52111de6ce46772964d0447463b55ede4da00607"
+checksum = "0ab22722d24a8ef87ed90d7fbf8a954454fd194c9712df6892b873739f1bdbaf"
 dependencies = [
  "fnv",
  "gl",
@@ -783,7 +789,7 @@ dependencies = [
  "piston-texture",
  "piston-viewport",
  "piston2d-graphics",
- "shader_version",
+ "shader_version 0.7.0",
 ]
 
 [[package]]
@@ -806,7 +812,7 @@ dependencies = [
  "glutin",
  "pistoncore-input",
  "pistoncore-window",
- "shader_version",
+ "shader_version 0.6.0",
 ]
 
 [[package]]
@@ -827,7 +833,7 @@ version = "0.46.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c196a99d2f9f01701db46cc7c2ab3130244189553e4ed8d40d2b59fb4b77f4a8"
 dependencies = [
- "piston-graphics_api_version",
+ "piston-graphics_api_version 0.2.0",
  "pistoncore-input",
 ]
 
@@ -1025,7 +1031,16 @@ version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "478e783fb7533629e19120ca01246884f8effff5f4d20ce81d34c7c47a2866fa"
 dependencies = [
- "piston-graphics_api_version",
+ "piston-graphics_api_version 0.2.0",
+]
+
+[[package]]
+name = "shader_version"
+version = "0.7.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dfadbf7574784ee97f062ace17e1008fb5e7f46dd714b7dd46baf6efebd30e26"
+dependencies = [
+ "piston-graphics_api_version 1.0.0",
 ]
 
 [[package]]
