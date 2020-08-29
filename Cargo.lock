@@ -756,9 +756,9 @@ dependencies = [
 
 [[package]]
 name = "piston2d-graphics"
-version = "0.36.0"
+version = "0.37.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1b7c7c36f6df5e0473d3ca3dd56a27acd75372903fcad1c647594f8c91ce1ff3"
+checksum = "bed0b4ea49db58337ec99d3e5e5bd6db3ae2f736b3f586e33428f92647113f70"
 dependencies = [
  "fnv",
  "interpolation",
@@ -771,9 +771,9 @@ dependencies = [
 
 [[package]]
 name = "piston2d-opengl_graphics"
-version = "0.73.0"
+version = "0.74.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0ab22722d24a8ef87ed90d7fbf8a954454fd194c9712df6892b873739f1bdbaf"
+checksum = "8a42f83a1a157bff10f3d6310e15f973953decdee4b1ca43653fd240d25b74c0"
 dependencies = [
  "fnv",
  "gl",

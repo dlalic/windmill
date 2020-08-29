@@ -6,6 +6,6 @@ edition = "2018"
 
 [dependencies]
 piston = "0.52"
-piston2d-graphics = "0.36"
+piston2d-graphics = "0.37"
 pistoncore-glutin_window = "0.66"
-piston2d-opengl_graphics = "0.73"
+piston2d-opengl_graphics = "0.74"
