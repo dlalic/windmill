@@ -1062,6 +1062,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "piston2d-graphics"
+version = "0.39.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d202b6ca097b66afdde8f31b434a54c58576c461d003c90f919ed5a086c39805"
+dependencies = [
+ "interpolation",
+ "piston-texture",
+ "piston-viewport",
+ "read_color",
+ "vecmath",
+]
+
+[[package]]
 name = "piston2d-opengl_graphics"
 version = "0.74.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1074,7 +1087,7 @@ dependencies = [
  "piston-shaders_graphics2d",
  "piston-texture",
  "piston-viewport",
- "piston2d-graphics",
+ "piston2d-graphics 0.37.0",
  "shader_version",
 ]
 
@@ -1564,7 +1577,7 @@ name = "windmill"
 version = "0.1.0"
 dependencies = [
  "piston",
- "piston2d-graphics",
+ "piston2d-graphics 0.39.0",
  "piston2d-opengl_graphics",
  "pistoncore-glutin_window",
 ]
