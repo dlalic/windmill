@@ -19,7 +19,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8c4afb09dd642feec8408e33f92f3ffc4052946f6b20f32fb99c1f58cd4fa7cf"
 dependencies = [
  "bitflags",
- "rusttype 0.9.2",
+ "rusttype",
  "walkdir",
  "xdg",
  "xml-rs",
@@ -30,15 +30,6 @@ name = "android_glue"
 version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "000444226fcff248f2bc4c7625be32c63caccfecc2723a2b9f78a7487a49c407"
-
-[[package]]
-name = "approx"
-version = "0.3.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f0e60b75072ecd4168020818c0107f2857bb6c4e64252d8d3983f6263b40a5c3"
-dependencies = [
- "num-traits",
-]
 
 [[package]]
 name = "autocfg"
@@ -431,31 +422,11 @@ dependencies = [
 
 [[package]]
 name = "gl"
-version = "0.11.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d7d8c8e25e8ed44d4813809205090162723a866fb4be3a9d8bb983c9a0bf98f1"
-dependencies = [
- "gl_generator 0.10.0",
-]
-
-[[package]]
-name = "gl"
 version = "0.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4b411c7e0bfc599e3606412c190e786b5bb48cf00073e1635f9bb6f88fe7d84a"
 dependencies = [
- "gl_generator 0.13.1",
-]
-
-[[package]]
-name = "gl_generator"
-version = "0.10.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a0ffaf173cf76c73a73e080366bf556b4776ece104b06961766ff11449f38604"
-dependencies = [
- "khronos_api 3.1.0",
- "log",
- "xml-rs",
+ "gl_generator",
 ]
 
 [[package]]
@@ -502,7 +473,7 @@ version = "0.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "772edef3b28b8ad41e4ea202748e65eefe8e5ffd1f4535f1219793dbb20b3d4c"
 dependencies = [
- "gl_generator 0.13.1",
+ "gl_generator",
  "winapi 0.3.9",
 ]
 
@@ -518,7 +489,7 @@ version = "0.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "07e853d96bebcb8e53e445225c3009758c6f5960d44f2543245f6f07b567dae0"
 dependencies = [
- "gl_generator 0.13.1",
+ "gl_generator",
  "objc",
 ]
 
@@ -528,7 +499,7 @@ version = "0.1.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "08c243de74d6cf5ea100c788826d2fb9319de315485dd4b310811a663b3809c3"
 dependencies = [
- "gl_generator 0.13.1",
+ "gl_generator",
  "x11-dl",
 ]
 
@@ -538,7 +509,7 @@ version = "0.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a93dba7ee3a0feeac0f437141ff25e71ce2066bcf1a706acab1559ffff94eb6a"
 dependencies = [
- "gl_generator 0.13.1",
+ "gl_generator",
 ]
 
 [[package]]
@@ -945,15 +916,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "13bd41f508810a131401606d54ac32a467c97172d74ba7662562ebba5ad07fa0"
 
 [[package]]
-name = "ordered-float"
-version = "1.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3741934be594d77de1c8461ebcbbe866f585ea616a9753aa78f2bdc69f0e4579"
-dependencies = [
- "num-traits",
-]
-
-[[package]]
 name = "osmesa-sys"
 version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1027,9 +989,9 @@ checksum = "2c10c0d7a00f671e717ab98aa2c7f7bf204082d0e6b246827dc17b68bbaf8d18"
 
 [[package]]
 name = "piston-shaders_graphics2d"
-version = "0.3.1"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "97bc17dac1dfff3e5cb84116062c7b46ff9d3dc0d88696a46d2f054cf64a10b6"
+checksum = "3a35f4d08d2b6fd7ff02baab63346d4b7d2fdd5ac3f2e091a5128c22c77a489a"
 
 [[package]]
 name = "piston-texture"
@@ -1052,29 +1014,42 @@ version = "0.37.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bed0b4ea49db58337ec99d3e5e5bd6db3ae2f736b3f586e33428f92647113f70"
 dependencies = [
+ "interpolation",
+ "piston-texture",
+ "piston-viewport",
+ "read_color",
+ "vecmath",
+]
+
+[[package]]
+name = "piston2d-graphics"
+version = "0.39.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d202b6ca097b66afdde8f31b434a54c58576c461d003c90f919ed5a086c39805"
+dependencies = [
  "fnv",
  "interpolation",
  "piston-texture",
  "piston-viewport",
  "read_color",
- "rusttype 0.8.3",
+ "rusttype",
  "vecmath",
 ]
 
 [[package]]
 name = "piston2d-opengl_graphics"
-version = "0.74.0"
+version = "0.77.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8a42f83a1a157bff10f3d6310e15f973953decdee4b1ca43653fd240d25b74c0"
+checksum = "5f202e23c2a2cb9487b3ae4d5bbcc430db57577439de307e15f7d44f8ace1df7"
 dependencies = [
  "fnv",
- "gl 0.11.0",
+ "gl",
  "image",
  "khronos_api 2.2.0",
  "piston-shaders_graphics2d",
  "piston-texture",
  "piston-viewport",
- "piston2d-graphics",
+ "piston2d-graphics 0.39.0",
  "shader_version",
 ]
 
@@ -1094,7 +1069,7 @@ version = "0.68.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cc136d56a2c6469a784e9191a4b5048948308210efa10d4726efc322c9f77232"
 dependencies = [
- "gl 0.13.0",
+ "gl",
  "glutin",
  "pistoncore-input",
  "pistoncore-window",
@@ -1216,17 +1191,6 @@ checksum = "41cc0f7e4d5d4544e8861606a285bb08d3e70712ccc7d2b84d7c0ccfaf4b05ce"
 
 [[package]]
 name = "rusttype"
-version = "0.8.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9f61411055101f7b60ecf1041d87fb74205fb20b0c7a723f07ef39174cf6b4c0"
-dependencies = [
- "approx",
- "ordered-float",
- "stb_truetype",
-]
-
-[[package]]
-name = "rusttype"
 version = "0.9.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dc7c727aded0be18c5b80c1640eae0ac8e396abf6fa8477d96cb37d18ee5ec59"
@@ -1327,15 +1291,6 @@ dependencies = [
  "wayland-client",
  "wayland-cursor",
  "wayland-protocols",
-]
-
-[[package]]
-name = "stb_truetype"
-version = "0.3.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f77b6b07e862c66a9f3e62a07588fee67cd90a9135a2b942409f195507b4fb51"
-dependencies = [
- "byteorder",
 ]
 
 [[package]]
@@ -1564,7 +1519,7 @@ name = "windmill"
 version = "0.1.0"
 dependencies = [
  "piston",
- "piston2d-graphics",
+ "piston2d-graphics 0.37.0",
  "piston2d-opengl_graphics",
  "pistoncore-glutin_window",
 ]
