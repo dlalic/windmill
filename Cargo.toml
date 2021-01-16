@@ -5,7 +5,7 @@ authors = ["Dunja Lalic"]
 edition = "2018"
 
 [dependencies]
-piston = "0.52"
-piston2d-graphics = "0.37"
-pistoncore-glutin_window = "0.68"
-piston2d-opengl_graphics = "0.77"
+piston = "0.52.1"
+piston2d-graphics = "0.39.0"
+pistoncore-glutin_window = "0.68.0"
+piston2d-opengl_graphics = "0.77.0"
