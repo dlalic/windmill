@@ -92,7 +92,8 @@ impl Windmill {
 
     pub fn line(&self) -> Option<Line> {
         // TODO: memoize
-        self.pivot.map(|pivot| Line::new(&pivot, self.radius, self.rotation))
+        self.pivot
+            .map(|pivot| Line::new(&pivot, self.radius, self.rotation))
     }
 }
 
