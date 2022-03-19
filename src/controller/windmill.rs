@@ -67,7 +67,7 @@ impl Windmill {
         let collision = self
             .points
             .iter()
-            .find(|point| cursor.is_colliding(&point.get_point(), COLLISION_TOLERANCE));
+            .find(|point| cursor.is_colliding(point.get_point(), COLLISION_TOLERANCE));
         match collision {
             None => {
                 let point = WindmillPoint::new(cursor);
