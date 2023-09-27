@@ -985,7 +985,7 @@ checksum = "6e465487e1063ebe4103bc0fb65bc3dd604b635b2012a41530d3a5f77106e526"
 dependencies = [
  "pistoncore-event_loop",
  "pistoncore-input",
- "pistoncore-window",
+ "pistoncore-window 0.47.1",
 ]
 
 [[package]]
@@ -1060,21 +1060,21 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "41d86b3bf012430bb23694348615e37769aca0e9910539ce93674006aeeb77e6"
 dependencies = [
  "pistoncore-input",
- "pistoncore-window",
+ "pistoncore-window 0.47.1",
  "spin_sleep",
 ]
 
 [[package]]
 name = "pistoncore-glutin_window"
-version = "0.71.0"
+version = "0.72.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "65d2af5268a7c85093df16a0a749a7a043fc2bab2f4619114a682685f05b13a7"
+checksum = "006f26dfaef3db5d3f29927a5aeedc62680e947707cd1d33015a7dba32234bdb"
 dependencies = [
  "gl",
  "glutin",
  "glutin-winit",
  "pistoncore-input",
- "pistoncore-window",
+ "pistoncore-window 1.0.0",
  "raw-window-handle",
  "shader_version",
  "winit",
@@ -1097,6 +1097,16 @@ name = "pistoncore-window"
 version = "0.47.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d62962b4e9cfc13143c77e032302fedc58a8f0f570d30006cdb38ba00a5e50bf"
+dependencies = [
+ "piston-graphics_api_version",
+ "pistoncore-input",
+]
+
+[[package]]
+name = "pistoncore-window"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "26faf0ca71c8215a37b3920229b5b13e5f34a24737de32fba82d4ebc191f43d1"
 dependencies = [
  "piston-graphics_api_version",
  "pistoncore-input",
